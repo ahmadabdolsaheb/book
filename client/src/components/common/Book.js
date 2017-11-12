@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetBookStatus, GetBookStatus2 } from './BookConditionals';
+import { GetIfHasImage, GetBookStatus, GetBookStatus2 } from './BookConditionals';
 import { requestBook, deleteBook, unrequestBook } from '../../actions/bookActions';
 import { addFlashMessage } from '../../actions/flashMessages';
 import { connect } from 'react-redux';
@@ -13,6 +13,8 @@ class Book extends React.Component {
         text: this.props.messages.messageMessage
       });
     });
+    console.log('delete');
+    console.log(this.props.state);
   }
 
   requestBook(){
@@ -22,6 +24,8 @@ class Book extends React.Component {
         text: this.props.messages.messageMessage
       });
     });
+    console.log('request');
+    console.log(this.props.state);
   }
 
   unrequestBook(){
@@ -31,12 +35,14 @@ class Book extends React.Component {
         text: this.props.messages.messageMessage
       });
     });
+    console.log('unrequest');
+    console.log(this.props.state);
   }
 
   render() {
     return (
       <div className="singleBookContainer" title={this.props.book.title}>
-        <img className="bookImage" src={this.props.book.image ? this.props.book.image.large : 'http://via.placeholder.com/180x275'} alt="☒" />
+        <GetIfHasImage book={this.props.book} />
 
         <ul className="bookDetailsContainer">
           <GetBookStatus 
@@ -64,6 +70,7 @@ class Book extends React.Component {
 
 function mapStateToProps(state) {
     return {
+    	state: state,
      	messages: state.books.message,
       id: state.auth.user.id,
     	username: state.auth.user.username

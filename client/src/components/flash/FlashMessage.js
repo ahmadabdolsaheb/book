@@ -14,7 +14,6 @@ class FlashMessage extends React.Component {
   }
 
   render(){
-    console.log(this.props);
     const { type, text } = this.props.message;
     return (
       <div className={classnames( 'alert', {

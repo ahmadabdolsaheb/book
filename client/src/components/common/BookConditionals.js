@@ -1,5 +1,14 @@
 import React from 'react';
 
+export function GetIfHasImage(props) {
+  //if has image
+  if(props.book.image) {
+    return <img className="bookImage" src={props.book.image.large} alt="☒" />
+  } else { 
+    return <h4 className="bookImage">{props.book.title}</h4>  
+  }
+}
+
 export function GetBookStatus(props) {
   //if not logged in
   if(!props.userID) {
