@@ -37,7 +37,7 @@ export function addNewBook(data) {
 
 export function requestBook(_id, username) {
   return dispatch => {
-    return axios.patch('/api/book/requestBook', {_id, username}).then(res => {
+    return axios.post('/api/book/requestBook', {_id, username}).then(res => {
       const allBooks = res.data[0];
       const messages = res.data[1];
       dispatch(allBooksPlusMessage(allBooks, messages));
@@ -57,7 +57,7 @@ export function deleteBook(_id) {
 
 export function unrequestBook(_id, username) {
   return dispatch => {
-    return axios.patch('/api/book/unrequestBook', {_id, username}).then(res => {
+    return axios.post('/api/book/unrequestBook', {_id, username}).then(res => {
       const allBooks = res.data[0];
       const messages = res.data[1];
       dispatch(allBooksPlusMessage(allBooks, messages));

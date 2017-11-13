@@ -5,6 +5,12 @@ import { addFlashMessage } from '../../actions/flashMessages';
 import './Offers.css';
 
 class Offers extends Component {
+  constructor(props) {
+  	 super(props);
+    this.unrequestBook = this.unrequestBook.bind(this);
+    this.acceptOffer = this.acceptOffer.bind(this);
+  }
+
   unrequestBook(book_id) {
     this.props.unrequestBook(book_id, this.props.username).then(res => {
       this.props.addFlashMessage({
@@ -124,7 +130,8 @@ function mapStateToProps(state) {
   return {
   	 username: state.auth.user.username,
   	 id: state.auth.user.id,
-    allBooks: state.books.allBooks
+    allBooks: state.books.allBooks,
+    messages: state.books.message
   }
 }
 

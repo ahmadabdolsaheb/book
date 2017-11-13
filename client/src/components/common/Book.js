@@ -13,8 +13,6 @@ class Book extends React.Component {
         text: this.props.messages.messageMessage
       });
     });
-    console.log('delete');
-    console.log(this.props.state);
   }
 
   requestBook(){
@@ -24,8 +22,6 @@ class Book extends React.Component {
         text: this.props.messages.messageMessage
       });
     });
-    console.log('request');
-    console.log(this.props.state);
   }
 
   unrequestBook(){
@@ -35,11 +31,10 @@ class Book extends React.Component {
         text: this.props.messages.messageMessage
       });
     });
-    console.log('unrequest');
-    console.log(this.props.state);
   }
 
   render() {
+  	console.log(this.props.state);
     return (
       <div className="singleBookContainer" title={this.props.book.title}>
         <GetIfHasImage book={this.props.book} />
@@ -70,7 +65,7 @@ class Book extends React.Component {
 
 function mapStateToProps(state) {
     return {
-    	state: state,
+      state: state,
      	messages: state.books.message,
       id: state.auth.user.id,
     	username: state.auth.user.username

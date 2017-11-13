@@ -3,7 +3,6 @@ var Schema = mongoose.Schema;
 
 var bookSchema = new Schema({
     ISBN: {
-        //id of the book
         type: Number,
         required: true
     },
@@ -12,20 +11,17 @@ var bookSchema = new Schema({
         required: true
     },
     current_owner: {
-        // username of the owner
         type: String,
         required: true
     },
-    publisher:String,
     image:{
         type:Object,
         default:{}
     },
-    bookUrl:String,
-    authors:{
-        type:Array,
-        default:[]
-    },
+    bookUrl: {
+    	type:String,
+    	default: ''
+    },    
     requested_From:{
       type:Array,
       default:[]
