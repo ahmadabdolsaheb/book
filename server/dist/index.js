@@ -30,13 +30,13 @@ var _book2 = _interopRequireDefault(_book);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-require('dotenv').config();
+require('dotenv').config({ silent: process.env.NODE_ENV === 'production' });
 
 var port = process.env.PORT || 8080;
 
 _mongoose2.default.Promise = global.Promise;
 
-_mongoose2.default.connect('mongodb://localhost/book1', { useMongoClient: true });
+_mongoose2.default.connect(process.env.MONGODB_URI || 'mongodb://localhost/book1', { useMongoClient: true });
 
 var app = (0, _express2.default)();
 
@@ -47,8 +47,8 @@ app.use(_bodyParser2.default.json());
 app.use('/api/users', _users2.default);
 app.use('/api/auth', _auth2.default);
 app.use('/api/book', _book2.default);
-
-console.log('mongodb://localhost/book1');
+//console.log(process.env.MONGODB_URI );
+//console.log('mongodb://localhost/book1');
 app.listen(port, function () {
   return console.log('Running on port: ' + port);
 });
